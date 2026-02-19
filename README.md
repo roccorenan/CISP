@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Portal Web (UI) - Consulta CISP (Raiz CNPJ)
 
 ## Rodar
@@ -28,3 +29,6 @@ Se você usa um arquivo `.env`, instale:
 `pip install python-dotenv`
 
 O `app.py` já tenta carregar automaticamente.
+=======
+# CISP
+>>>>>>> 90299153fdb497a48a120264667b0c453f25285a
