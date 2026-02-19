@@ -1,0 +1,718 @@
+{
+   "cliente":{
+      "identificacaoCliente":37608058000122,
+      "raizCnpj":"37608058",
+      "tipo":"MATRIZ",
+      "porte":"EPP",
+      "razaoSocial":"D.L.O PINHEIRO - COMERCIO E SERVICOS LTDA",
+      "nomeFantasia":"LORIN PRESENTES",
+      "dataFundacao":"2020-07-02",
+      "endereco":"AV DAVI ALVES SILVA 481 ********",
+      "bairro":"CENTRO",
+      "cidade":"BURITICUPU",
+      "uf":"MA",
+      "cep":65393000,
+      "telefone":"(98) 8343-4845/ (98) 8266-7298",
+      "email":"DAYANNALEITEOLIVEIRA@GMAIL.COM",
+      "dataCadastramento":"2024-05-20",
+      "associadaCadastrante":154,
+      "capitalSocial":"R$250.000,00 (Duzentos e cinquenta mil reais)",
+      "alerta":"observe as datas de fundação e inclusão na CISP.",
+      "cnae":"47.54-7-01",
+      "descricaoAtividadeFiscal":"Comércio varejista de móveis",
+      "socios":[
+         {
+            "identificacaoCliente":37608058000122,
+            "nome":"DAYANNA LEITE OLIVEIRA PINHEIRO",
+            "qualificacao":"49-Sócio-Administrador",
+            "dataConsulta":"2026-02-10",
+            "dataAtualizacao":"2026-02-10"
+         }
+      ]
+   },
+   "receitaFederal":{
+      "identificacaoCliente":37608058000122,
+      "razaoSocial":"D.L.O PINHEIRO - COMERCIO E SERVICOS LTDA",
+      "uf":"MA",
+      "cnae":"47.54-7-01",
+      "descricaoAtividadeFiscal":"Comércio varejista de móveis",
+      "situacaoCadastral":"ATIVA",
+      "dataSituacaoCadastral":"2020-07-02",
+      "dataConsulta":"2026-02-10",
+      "numeroConsulta":0
+   },
+   "simplesNacional":null,
+   "sintegras":[
+      
+   ],
+   "suframas":[
+      
+   ],
+   "qsaSocios":[
+      
+   ],
+   "ratings":[
+      {
+         "data":"Feb-26",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":4,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Boa",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Jan-26",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":3,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Razoavel",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Dec-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":3,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Razoavel",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Nov-25",
+         "classificacao":"B",
+         "descricaoClassificacao":"Situacao Boa",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":5,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Excelente",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Oct-25",
+         "classificacao":"D",
+         "descricaoClassificacao":"Situacao Desfavoravel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":1,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Deficiente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":3,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Razoavel",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Sep-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":3,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Razoavel",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Aug-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":4,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Boa",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Jul-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":4,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Boa",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Jun-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":3,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Razoavel",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"May-25",
+         "classificacao":"B",
+         "descricaoClassificacao":"Situacao Boa",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":5,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Excelente",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Apr-25",
+         "classificacao":"B",
+         "descricaoClassificacao":"Situacao Boa",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":5,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Excelente",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":5,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Excelente",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Mar-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":2,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Desfavoravel",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":5,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Excelente",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      },
+      {
+         "data":"Feb-25",
+         "classificacao":"C",
+         "descricaoClassificacao":"Situacao Razoavel",
+         "quesitos":{
+            "notaPontualidadeNivelAtraso":2,
+            "descricaoPontualidadeNivelAtraso":"Avalia a regularidade e qualidade dos pagamentos do cliente.",
+            "descricaoNotaPontualidadeNivelAtraso":"Situacao Desfavoravel",
+            "notaRelacionamentoMercado":1,
+            "descricaoRelacionamentoMercado":"Avalia a tradicao do cliente junto aos associados com analise do tempo de atuacao no mercado e frequencia de compras.",
+            "descricaoNotaRelacionamentoMercado":"Situacao Deficiente",
+            "notaOcorrenciasRestritivas":5,
+            "descricaoOcorrenciasRestritivas":"Avalia o comportamento do cliente em relacao aos dados restritivos apontados pelos associados e publicacoes especializadas.",
+            "descricaoNotaOcorrenciasRestritivas":"Situacao Excelente",
+            "notaCreditoPraca":4,
+            "descricaoCreditoPraca":"Avalia o credito obtido pelo cliente junto aos associados mediante analise dos prazos de recebimento do compromissado e representatividade do maior acumulo em relacao ao Limite de credito atribuido.",
+            "descricaoNotaCreditoPraca":"Situacao Boa",
+            "notaDensidadeComercial":1,
+            "descricaoDensidadeComercial":"Considera a presenca do cliente no conjunto de todas as informacoes levando em conta tambem a sua representatividade no principal segmento de atuacao.",
+            "descricaoNotaDensidadeComercial":"Situacao Deficiente"
+         }
+      }
+   ],
+   "positivaSegmentos":[
+      {
+         "descricaoSegmento":"PAPELARIA           ",
+         "totalAssociadasSegmento":3,
+         "valorTotalDebitoSegmento":9667.09,
+         "valorTotalDebitoVencidoMais05DiasSegmento":0.00,
+         "porcentagemDebitoVencidoMais05DiasSegmento":".00%",
+         "valorTotalDebitoVencidoMais15DiasSegmento":0.00,
+         "porcentagemDebitoVencidoMais15DiasSegmento":".00%",
+         "valorTotalDebitoVencidoMais30DiasSegmento":0.00,
+         "porcentagemDebitoVencidoMais30DiasSegmento":".00%",
+         "positivas":[
+            {
+               "dataInformacao":"2026-02-10",
+               "codigoAssociada":154,
+               "razaoSocial":"SAO DOMINGOS S/A - INDUSTRIA GRAFICA",
+               "fone":"FONE: 0017 35249000 0     ",
+               "dataClienteDesde":"2024-03-26",
+               "dataUltimaCompra":"2025-11-14",
+               "dataMaiorAcumulo":"2025-11-14",
+               "valorMaiorAcumulo":10985.33,
+               "valorDebitoAtual":9667.09,
+               "valorDebitoVencidoMais05Dias":0.00,
+               "valorDebitoVencidoMais15Dias":0.00,
+               "valorDebitoVencidoMais30Dias":0.00,
+               "prazoMedioDeVendas":131,
+               "valorMediaPonderadaAtrasoPagamentos":1.00,
+               "mediaPonderadaTitulosVencidosMais05Dias":0,
+               "valorLimiteCredito":11000.00,
+               "codigoLimiteCredito":1,
+               "descricaoLimiteCredito":"Limite de Credito Tecnico"
+            },
+            {
+               "dataInformacao":"2026-02-11",
+               "codigoAssociada":16,
+               "razaoSocial":"A W FABER CASTELL S/A",
+               "fone":"FONE: 0016 21061041 0     ",
+               "dataClienteDesde":"2024-06-21",
+               "dataUltimaCompra":"2025-10-31",
+               "dataMaiorAcumulo":"2025-10-31",
+               "valorMaiorAcumulo":5525.07,
+               "valorDebitoAtual":0.00,
+               "valorDebitoVencidoMais05Dias":0.00,
+               "valorDebitoVencidoMais15Dias":0.00,
+               "valorDebitoVencidoMais30Dias":0.00,
+               "prazoMedioDeVendas":0,
+               "valorMediaPonderadaAtrasoPagamentos":6.13,
+               "mediaPonderadaTitulosVencidosMais05Dias":0,
+               "valorLimiteCredito":20000.00,
+               "codigoLimiteCredito":2,
+               "descricaoLimiteCredito":"Limite Operacional de Credito"
+            },
+            {
+               "dataInformacao":"2025-11-02",
+               "codigoAssociada":174,
+               "razaoSocial":"MULTILASER INDUSTRIAL S/A",
+               "fone":"FONE: 0011 36168646 0     ",
+               "dataClienteDesde":"2023-10-16",
+               "dataUltimaCompra":"2025-04-29",
+               "dataMaiorAcumulo":"2025-04-29",
+               "valorMaiorAcumulo":6046.88,
+               "valorDebitoAtual":0.00,
+               "valorDebitoVencidoMais05Dias":0.00,
+               "valorDebitoVencidoMais15Dias":0.00,
+               "valorDebitoVencidoMais30Dias":0.00,
+               "prazoMedioDeVendas":0,
+               "valorMediaPonderadaAtrasoPagamentos":7.96,
+               "mediaPonderadaTitulosVencidosMais05Dias":0,
+               "valorLimiteCredito":12000.00,
+               "codigoLimiteCredito":3,
+               "descricaoLimiteCredito":"Nao utiliza o conceito de Limite de Credito"
+            }
+         ]
+      }
+   ],
+   "restritivas":[
+      
+   ],
+   "chequeSemfundo":{
+      "totalDevolucoes":0,
+      "cheques":[
+         
+      ]
+   },
+   "discourse":{
+      "titulo":"Comunidade CISP (Fórum de Debates)",
+      "posts":[
+         
+      ],
+      "topics":null
+   },
+   "prospectEstados":[
+      
+   ],
+   "alertas":[
+      
+   ],
+   "garantias":[
+      
+   ],
+   "quantidadeConsultasUltimos12Meses":[
+      {
+         "data":"Fev/26",
+         "consultas":0
+      },
+      {
+         "data":"Jan/26",
+         "consultas":0
+      },
+      {
+         "data":"Dez/25",
+         "consultas":0
+      },
+      {
+         "data":"Nov/25",
+         "consultas":0
+      },
+      {
+         "data":"Out/25",
+         "consultas":2
+      },
+      {
+         "data":"Set/25",
+         "consultas":10
+      },
+      {
+         "data":"Ago/25",
+         "consultas":12
+      },
+      {
+         "data":"Jul/25",
+         "consultas":6
+      },
+      {
+         "data":"Jun/25",
+         "consultas":12
+      },
+      {
+         "data":"Mai/25",
+         "consultas":1
+      },
+      {
+         "data":"Abr/25",
+         "consultas":15
+      },
+      {
+         "data":"Mar/25",
+         "consultas":3
+      },
+      {
+         "data":"Fev/25",
+         "consultas":1
+      }
+   ],
+   "associadaConsultaUltimos30Dias":[
+      
+   ],
+   "associadaNaoConcederamCredito":[
+      
+   ],
+   "informacaoSuporte":{
+      "valorTotalDebitoAtual":9667.09,
+      "quantidadeAssociadasDebitoAtual":1,
+      "valorTotalDebitoVencidoMais05Dias":0.00,
+      "porcentagemDebitoVencidoMais05Dias":".00%",
+      "quantidadeAssociadasDebitoVencidoMais05Dias":0,
+      "valorTotalDebitoVencidoMais15Dias":0.00,
+      "porcentagemDebitoVencidoMais15Dias":".00%",
+      "quantidadeAssociadasDebitoVencidoMais15Dias":0,
+      "valorTotalDebitoVencidoMais30Dias":0.00,
+      "porcentagemDebitoVencidoMais30Dias":".00%",
+      "quantidadeAssociadasDebitoVencidoMais30Dias":0,
+      "valorTotalLimiteCredito":43000.00,
+      "quantidadeAssociadasLimiteCredito":3,
+      "valorTotalMaiorAcumulo":22557.28,
+      "quantidadeAssociadasMaiorAcumulo":3,
+      "quantidadeAssociadasInformacoesNegociais":3,
+      "quantidadeAssociadasVendasUltimos2Meses":0
+   },
+   "indicadores":[
+      {
+         "codigoSegmento":8,
+         "descricaoSegmento":"PAPELARIA           ",
+         "indiceAlerta":0.00,
+         "indiceAtraso":0.00,
+         "indiceInadimplencia":0.00
+      }
+   ],
+   "informacoesComportamentaisSegmentos":[
+      {
+         "dataAtualizacao":"Jan-26",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":13195.37,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":13195.37
+      },
+      {
+         "dataAtualizacao":"Dec-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":14300.38,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":14300.38
+      },
+      {
+         "dataAtualizacao":"Nov-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":16510.40,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":16510.40
+      },
+      {
+         "dataAtualizacao":"Oct-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":1209.36,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":1209.36
+      },
+      {
+         "dataAtualizacao":"Sep-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":1209.36,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":1209.36
+      },
+      {
+         "dataAtualizacao":"Aug-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":2418.74,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":2418.74
+      },
+      {
+         "dataAtualizacao":"Jul-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":3628.12,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":3628.12
+      },
+      {
+         "dataAtualizacao":"Jun-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":4837.50,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":4837.50
+      },
+      {
+         "dataAtualizacao":"May-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":6372.87,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":6372.87
+      },
+      {
+         "dataAtualizacao":"Apr-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":1006.09,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":1006.09
+      },
+      {
+         "dataAtualizacao":"Mar-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":5023.38,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":5023.38
+      },
+      {
+         "dataAtualizacao":"Feb-25",
+         "comportamentosSegmentos":[
+            {
+               "codigoSegmento":8,
+               "descricaoSegmento":"PAPELARIA           ",
+               "valorTotalDebitoAtual":8742.82,
+               "porcentagem":"100.00%"
+            }
+         ],
+         "total":8742.82
+      }
+   ],
+   "links":[
+      {
+         "rel":"BALANCO",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-balanco/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"PROTESTOS",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-protesto/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"PROSPECT",
+         "uri":"https://servicos.cisp.com.br/v1/prospect/MA",
+         "method":"GET"
+      },
+      {
+         "rel":"PROCESSOS",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-processo/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"CERTIDAO_NEGATIVA_DEBITOS",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-certidao-negativa-debito/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"PROTESTOS_ORDENADO",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-protesto/ordenado/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"CONSULTA_QSA",
+         "uri":"https://servicos.cisp.com.br/v1/consulta-qsa/37608058000122",
+         "method":"GET"
+      },
+      {
+         "rel":"BENEFICIARIO",
+         "uri":"https://servicos.cisp.com.br/v1/socio-beneficiario/49485322000167",
+         "method":"GET"
+      }
+   ]
+}

@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(d:PythonCISPvenvScriptsactivate)",
+      "Bash(python:*)",
+      "Bash(\"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\" -m pip install requests)",
+      "Bash(set:*)",
+      "Bash(\"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\" \"d:\\\\Python\\\\CISP\\\\conectApi.py\")",
+      "Bash(CISP_USERNAME=WS15401 CISP_PASSWORD='gI!r6O$z5A' \"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\":*)",
+      "Bash(\"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\":*)",
+      "Bash(\"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\" -m pip install python-dotenv -q)",
+      "Bash(\"venv\\\\Scripts\\\\python.exe\" -c:*)",
+      "Bash(\"venv\\\\Scripts\\\\python.exe\":*)"
+    ]
+  }
+}

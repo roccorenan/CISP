@@ -1,0 +1,335 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row g-3">
+  <div class="col-12">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="d-flex flex-column flex-lg-row gap-3 align-items-lg-center">
+          <div class="flex-grow-1">
+            <div class="h5 mb-1">Consultar raiz do CNPJ</div>
+            <div class="text-body-secondary small">
+              Digite a <strong>raiz (8 dígitos)</strong> ou cole o <strong>CNPJ completo</strong> (vamos extrair a raiz automaticamente).
+            </div>
+          </div>
+
+          <div class="d-flex flex-column flex-sm-row gap-2">
+            <div class="input-group input-group-lg">
+              <span class="input-group-text">Raiz</span>
+              <input id="raiz" type="text" class="form-control" placeholder="Ex.: 45543915" autocomplete="off" inputmode="numeric">
+            </div>
+
+            <div class="d-grid d-sm-flex gap-2">
+              <button id="btnBuscar" class="btn btn-primary btn-lg">
+                <span class="spinner-border spinner-border-sm me-2 d-none" id="spBuscar" aria-hidden="true"></span>
+                Consultar
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 align-items-center mt-3">
+          <span class="badge text-bg-light border" id="statusBadge">Aguardando consulta</span>
+          <span class="text-body-secondary small" id="statusText"></span>
+          <div class="ms-auto d-flex gap-2">
+            <button class="btn btn-sm btn-outline-secondary d-none" id="btnBaixarJson">Baixar JSON</button>
+            <button class="btn btn-sm btn-outline-secondary d-none" id="btnLimpar">Limpar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-7">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="fw-semibold">Resumo do Cliente</div>
+          <div class="text-body-secondary small" id="atualizacao"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div id="clienteEmpty" class="empty-state">
+          <div class="display-6">🔎</div>
+          <div class="fw-semibold mt-2">Nenhuma consulta ainda</div>
+          <div class="text-body-secondary small">Informe a raiz e clique em <strong>Consultar</strong>.</div>
+        </div>
+
+        <div id="clienteBox" class="d-none">
+          <div class="mb-2">
+            <div class="h4 mb-0" id="razaoSocial">-</div>
+            <div class="text-body-secondary" id="nomeFantasia">-</div>
+          </div>
+
+          <div class="row g-2">
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">CNPJ</div>
+                <div class="v" id="cnpj">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">Situação Receita Federal</div>
+                <div class="v" id="situacaoRF">-</div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="kv">
+                <div class="k">Endereço</div>
+                <div class="v" id="endereco">-</div>
+              </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">CNAE</div>
+                <div class="v" id="cnae">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">Atividade</div>
+                <div class="v" id="atividade">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">Data de Fundação</div>
+                <div class="v" id="dataFundacao">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">Data de Inclusão CISP</div>
+                <div class="v" id="dataInclusaoCISP">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <div class="kv">
+                <div class="k">Modificado em</div>
+                <div class="v" id="modificadoEm">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="kv">
+                <div class="k">Hora Modificação</div>
+                <div class="v" id="horaModificacao">-</div>
+              </div>
+            </div>
+            <div class="col-12 col-md-3">
+              <div class="kv">
+                <div class="k">Usuário Modificação</div>
+                <div class="v" id="usuarioModificacao">-</div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <ul class="nav nav-pills" id="tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="tab-restritivas" data-bs-toggle="pill" data-bs-target="#pane-restritivas" type="button" role="tab">Restritivas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-positivas" data-bs-toggle="pill" data-bs-target="#pane-positivas" type="button" role="tab">Positivas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-consultas" data-bs-toggle="pill" data-bs-target="#pane-consultas" type="button" role="tab">Consultas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-assoc" data-bs-toggle="pill" data-bs-target="#pane-assoc" type="button" role="tab">Associadas</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="tab-rating" data-bs-toggle="pill" data-bs-target="#pane-rating" type="button" role="tab">Rating</button>
+            </li>
+          </ul>
+
+          <div class="tab-content mt-3">
+            <div class="tab-pane fade show active" id="pane-restritivas" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-sm align-middle">
+                  <thead>
+                    <tr>
+                      <th>Descrição</th>
+                      <th class="text-nowrap">Data</th>
+                      <th>Associada</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tblRestritivas"></tbody>
+                </table>
+              </div>
+              <div class="text-body-secondary small d-none" id="restritivasEmpty">Sem restritivas.</div>
+            </div>
+
+            <div class="tab-pane fade" id="pane-positivas" role="tabpanel">
+              <div class="accordion" id="segAccordion"></div>
+              <div class="text-body-secondary small d-none" id="segEmpty">Sem positivas por segmento.</div>
+            </div>
+
+            <div class="tab-pane fade" id="pane-consultas" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-sm align-middle">
+                  <thead>
+                    <tr>
+                      <th>Mês/Ano</th>
+                      <th class="text-end">Qtd.</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tblConsultas"></tbody>
+                </table>
+              </div>
+              <div class="text-body-secondary small d-none" id="consultasEmpty">Sem consultas.</div>
+            </div>
+
+            <div class="tab-pane fade" id="pane-assoc" role="tabpanel">
+              <div class="row g-3">
+                <div class="col-12 col-lg-6">
+                  <div class="fw-semibold mb-2">Consultaram (30 dias)</div>
+                  <ul class="list-group list-group-flush" id="listAssocCons"></ul>
+                  <div class="text-body-secondary small d-none" id="assocConsEmpty">Sem registros.</div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="fw-semibold mb-2">Não concederam crédito</div>
+                  <ul class="list-group list-group-flush" id="listAssocNao"></ul>
+                  <div class="text-body-secondary small d-none" id="assocNaoEmpty">Sem registros.</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane fade" id="pane-rating" role="tabpanel">
+              <div class="table-responsive">
+                <table class="table table-sm align-middle">
+                  <thead>
+                    <tr>
+                      <th class="text-nowrap">Data</th>
+                      <th>Classificação</th>
+                      <th>Descrição</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tblRating"></tbody>
+                </table>
+              </div>
+              <div class="text-body-secondary small d-none" id="ratingEmpty">Sem análises.</div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-xl-5">
+    <div class="card shadow-sm mb-3">
+      <div class="card-header bg-body fw-semibold">Indicadores</div>
+      <div class="card-body">
+        <div class="row g-2">
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Rating</div>
+              <div class="value" id="mRating">-</div>
+              <div class="hint" id="mRatingDesc"></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Débito atual</div>
+              <div class="value" id="mDebito">-</div>
+              <div class="hint">Total no CISP</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Limite de crédito</div>
+              <div class="value" id="mLimite">-</div>
+              <div class="hint">Somatório</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Maior acúmulo</div>
+              <div class="value" id="mAcumulo">-</div>
+              <div class="hint">Somatório</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="metric">
+              <div class="label">Vencidos</div>
+              <div class="value" id="mVencidos">-</div>
+              <div class="hint">+05 / +15 / +30 dias</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Data maior acúmulo</div>
+              <div class="value" id="mDataAcumulo">-</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Data última compra</div>
+              <div class="value" id="mUltimaCompra">-</div>
+              <div class="hint" id="mAssocUltimaCompra"></div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Qtd. Assoc. Últ. 2 m</div>
+              <div class="value" id="mAssoc2m">-</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Cheques sem fundo</div>
+              <div class="value" id="mCheques">-</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Títulos protesto</div>
+              <div class="value" id="mProtesto">-</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="metric">
+              <div class="label">Sts. Sintegra</div>
+              <div class="value" id="mSintegra">-</div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="my-3">
+
+        <div class="small text-body-secondary">
+          Dica: <strong>Consultar</strong> lê do Postgres e, se não existir, busca na API CISP automaticamente.
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-body fw-semibold">Histórico rápido</div>
+      <div class="card-body">
+        <div class="text-body-secondary small mb-2">Últimas raízes consultadas (neste navegador)</div>
+        <div class="d-flex flex-wrap gap-2" id="chips"></div>
+        <div class="text-body-secondary small mt-3" id="chipsEmpty">Nenhum histórico ainda.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-3 mb-0">
+  <div class="col-12">
+    <div class="card shadow-sm pbi-card">
+      <div class="card-header bg-body fw-semibold">Power BI</div>
+      <div class="card-body p-0">
+        <iframe id="pbiFrame" class="pbi-embed" src="" title="Relatório Power BI" allowfullscreen referrerpolicy="no-referrer"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"d:\\\\Python\\\\CISP\\\\venv\\\\Scripts\\\\python.exe\" -m ensurepip --upgrade)"
+    ]
+  }
+}
