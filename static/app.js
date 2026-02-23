@@ -454,8 +454,6 @@
 
     const pbi = $("pbiFrame");
     if (pbi) pbi.src = PBI_URL;
-    const pbiLink = $("pbiLink");
-    if (pbiLink) pbiLink.href = PBI_URL;
 
     $("raiz").addEventListener("input", (e) => {
       // deixa só números enquanto digita
