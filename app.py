@@ -37,7 +37,7 @@ DB_CONFIG = {
     'database': os.environ.get('DB_NAME', 'dbDataLakePrd'),
     'user': os.environ.get('DB_USER', 'postgres'),
     'password': os.environ.get('POSTGRES'),
-    'options': f"-c search_path={os.environ.get('DB_SCHEMA', 'scsilverlayer')}"
+    'options': f"-c search_path={os.environ.get('DB_SCHEMA', 'scsilverlayer')} -c client_encoding=WIN1252"
 }
 
 def conectar_db():
