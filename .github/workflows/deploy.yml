@@ -1,68 +1,27 @@
-name: 🚀 Deploy Produção
+name: Deploy Produção
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch:   # permite rodar manualmente pela UI do GitHub
+    branches: [ main ]
 
 jobs:
   deploy:
-    name: Deploy no Servidor Linux
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
-
-      # ── 1. Checkout ────────────────────────────────────────────
-      - name: 📥 Checkout código
+      - name: 🛎 Checkout código
         uses: actions/checkout@v4
 
-      # ── 2. Valida sintaxe Python antes de deployar ─────────────
       - name: 🐍 Verificar sintaxe Python
         run: |
-          python -m py_compile app.py
+          python3 -m py_compile app.py
           echo "✅ app.py — sintaxe OK"
 
-      # ── 3. Deploy via SSH ──────────────────────────────────────
-      - name: 🚀 Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host:     ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          key:      ${{ secrets.SERVER_SSH_KEY }}
-          port:     ${{ secrets.SERVER_PORT }}
-          script: |
-            set -e   # para tudo se qualquer comando falhar
-
-            echo ""
-            echo "══════════════════════════════════════════"
-            echo "  Deploy CISP — $(date '+%Y-%m-%d %H:%M:%S')"
-            echo "══════════════════════════════════════════"
-
-            cd /opt/cisp
-
-            # Puxa o código mais recente
-            echo "📥 git pull origin main..."
-            git pull origin main
-
-            # Reconstrói a imagem com o novo código
-            echo "🔨 docker-compose build..."
-            docker-compose build --no-cache
-
-            # Sobe o container (substitui o antigo sem downtime perceptível)
-            echo "🔄 docker-compose up -d..."
-            docker-compose up -d
-
-            # Remove imagens antigas para liberar espaço em disco
-            echo "🧹 Limpando imagens antigas..."
-            docker image prune -f
-
-            # Aguarda o container inicializar e verifica o health-check
-            echo "⏳ Aguardando health-check (15s)..."
-            sleep 15
-            STATUS=$(docker inspect --format='{{.State.Health.Status}}' cisp-web 2>/dev/null || echo "sem health-check")
-            echo "📊 Status do container: $STATUS"
-
-            echo ""
-            echo "✅ Deploy concluído com sucesso!"
-            echo "🌐 http://$(hostname -I | awk '{print $1}'):5000"
+      - name: 🚀 Deploy com Docker Compose
+        run: |
+          cd $GITHUB_WORKSPACE
+          docker compose down
+          docker compose build --no-cache
+          docker compose up -d
+          docker image prune -f
+          echo "✅ Deploy concluído!"
