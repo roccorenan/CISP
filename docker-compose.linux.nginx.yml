@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.linux
+    container_name: cisp-web
+    env_file:
+      - .env
+    environment:
+      DB_HOST: ${DB_HOST:-127.0.0.1}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_NAME: ${DB_NAME:-dbDataLakePrd}
+      DB_USER: ${DB_USER:-postgres}
+      DB_SCHEMA: ${DB_SCHEMA:-scsilverlayer}
+    network_mode: host
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:stable
+    container_name: cisp-nginx
+    volumes:
+      - ./scripts/linux/nginx/cisp.conf:/etc/nginx/conf.d/cisp.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+    network_mode: host
+    restart: unless-stopped

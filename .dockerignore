@@ -1,38 +1,13 @@
-# ── Secrets — NUNCA entram na imagem ─────────────────────────
-.env
-*.env
-.env.*
-
-# ── Git ───────────────────────────────────────────────────────
-.git/
-.gitignore
-.github/
-
-# ── Python ───────────────────────────────────────────────────
+*.pyc
 __pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.egg-info/
+.venv/
+.env
+.env.*
+*.log
 dist/
 build/
-.venv/
-venv/
-env/
-
-# ── IDE ───────────────────────────────────────────────────────
 .vscode/
 .idea/
-.claude/
+.git/
+node_modules/
 
-# ── OS ───────────────────────────────────────────────────────
-.DS_Store
-Thumbs.db
-
-# ── Dados e arquivos de desenvolvimento ──────────────────────
-data.json
-conectApi.py
-integração.py
-APIFLASK.py
-PlainText.txt
-*.log
