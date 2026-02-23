@@ -37,7 +37,7 @@ DB_CONFIG = {
     'database': os.environ.get('DB_NAME', 'dbDataLakePrd'),
     'user': os.environ.get('DB_USER', 'postgres'),
     'password': os.environ.get('POSTGRES'),
-    'options': f"-c search_path={os.environ.get('DB_SCHEMA', 'scsilverlayer')} -c client_encoding=WIN1252"
+    'options': f"-c search_path={os.environ.get('DB_SCHEMA', 'scsilverlayer')}"
 }
 
 def conectar_db():
@@ -358,22 +358,22 @@ def obter_cliente(raiz):
     conn = None
     cursor = None
     try:
+        # =====================================================================
+        # 1. SEMPRE busca na CISP primeiro e atualiza o banco
+        # =====================================================================
+        payload_cisp = buscar_api_cisp(raiz)
+        if payload_cisp:
+            inserir_no_postgres(raiz, payload_cisp)
+
+        # =====================================================================
+        # 2. Lê do banco (já atualizado)
+        # =====================================================================
         conn = conectar_db()
         cursor = conn.cursor(cursor_factory=RealDictCursor)
 
         root_col = escolher_col(cursor, "cisp_avaliacao_analitica", ["raiz", "raizcnpj", "raiz_cnpj", "raizCnpj"]) or "raiz"
         cursor.execute(f"SELECT * FROM cisp_avaliacao_analitica WHERE {root_col} = %s LIMIT 1", (raiz,))
         principal_row = cursor.fetchone()
-
-        if not principal_row:
-            try:
-                payload_seed = buscar_api_cisp(raiz)
-                if payload_seed:
-                    inserir_no_postgres(raiz, payload_seed)
-                    cursor.execute(f"SELECT * FROM cisp_avaliacao_analitica WHERE {root_col} = %s LIMIT 1", (raiz,))
-                    principal_row = cursor.fetchone()
-            except Exception:
-                pass
 
         principal = None
         if principal_row:
@@ -419,12 +419,12 @@ def obter_cliente(raiz):
                 "data_atualizacao": principal_row.get("data_atualizacao").isoformat() if principal_row.get("data_atualizacao") else None,
             }
 
-        if not principal:
+        # Fallback: se não salvou no banco, monta principal direto do payload da CISP
+        if not principal and payload_cisp:
             principal = {}
             try:
-                payload_base = payload_seed if 'payload_seed' in locals() else buscar_api_cisp(raiz)
-                cli = (payload_base or {}).get("cliente") or {}
-                rf = (payload_base or {}).get("receitaFederal") or {}
+                cli = payload_cisp.get("cliente") or {}
+                rf = payload_cisp.get("receitaFederal") or {}
                 principal.update({
                     "raiz": cli.get("raizCnpj") or raiz,
                     "cnpj": cli.get("identificacaoCliente"),
@@ -446,57 +446,54 @@ def obter_cliente(raiz):
             except Exception:
                 pass
 
-        if (not principal.get("data_maior_acumulo")) or (not principal.get("data_ultima_compra")) or (not principal.get("rating_atual")):
+        # Complementa campos de datas e rating direto do payload_cisp já obtido
+        if payload_cisp and principal is not None:
             try:
-                payload = buscar_api_cisp(raiz)
-                if payload:
-                    info_sup = payload.get("informacaoSuporte", {}) or {}
-                    ratings = payload.get("ratings") or []
-                    segmentos = payload.get("positivaSegmentos") or []
-                    melhor_maior_data = None
-                    ultima_compra_data = None
-                    ultima_compra_codigo = None
-                    melhor_maior_valor = None
-                    for seg in segmentos:
-                        for pos in seg.get("positivas", []) or []:
-                            v = pos.get("valorMaiorAcumulo")
-                            d_maior = converter_data(pos.get("dataMaiorAcumulo"))
-                            d_ult = converter_data(pos.get("dataUltimaCompra"))
-                            cod = pos.get("codigoAssociada")
-                            if v is not None and d_maior:
-                                if (melhor_maior_valor is None) or (float(v) > float(melhor_maior_valor)):
-                                    melhor_maior_valor = v
-                                    melhor_maior_data = d_maior
-                            if d_ult:
-                                if (ultima_compra_data is None) or (d_ult > ultima_compra_data):
-                                    ultima_compra_data = d_ult
-                                    ultima_compra_codigo = cod
-                    if melhor_maior_data and not principal.get("data_maior_acumulo"):
-                        principal["data_maior_acumulo"] = melhor_maior_data.isoformat()
-                    if ultima_compra_data and not principal.get("data_ultima_compra"):
-                        principal["data_ultima_compra"] = ultima_compra_data.isoformat()
-                        principal["codigo_associada_ultima_compra"] = ultima_compra_codigo
-                    if (not principal.get("rating_atual")) and ratings:
-                        r0 = ratings[0]
-                        principal["rating_atual"] = r0.get("classificacao")
-                        principal["descricao_rating"] = r0.get("descricaoClassificacao")
-                    # Fallback for totals if missing in DB
-                    principal.setdefault("total_limite_credito", info_sup.get("valorTotalLimiteCredito"))
-                    principal.setdefault("total_maior_acumulo", info_sup.get("valorTotalMaiorAcumulo"))
-                    principal.setdefault("total_debito_atual", info_sup.get("valorTotalDebitoAtual"))
-                    principal.setdefault("total_debito_vencido_05_dias", info_sup.get("valorTotalDebitoVencidoMais05Dias"))
-                    principal.setdefault("total_debito_vencido_15_dias", info_sup.get("valorTotalDebitoVencidoMais15Dias"))
-                    principal.setdefault("total_debito_vencido_30_dias", info_sup.get("valorTotalDebitoVencidoMais30Dias"))
-                    # Preferir o último "Débito atual" dos comportamentos por segmento quando disponível
-                    try:
-                        comp = payload.get("informacoesComportamentaisSegmentos") or []
-                        if isinstance(comp, list) and comp:
-                            ultimo = comp[0]
-                            total_ultimo = ultimo.get("total")
-                            if total_ultimo is not None:
-                                principal["total_debito_atual"] = total_ultimo
-                    except Exception:
-                        pass
+                info_sup = payload_cisp.get("informacaoSuporte", {}) or {}
+                ratings = payload_cisp.get("ratings") or []
+                segmentos = payload_cisp.get("positivaSegmentos") or []
+                melhor_maior_data = None
+                ultima_compra_data = None
+                ultima_compra_codigo = None
+                melhor_maior_valor = None
+                for seg in segmentos:
+                    for pos in seg.get("positivas", []) or []:
+                        v = pos.get("valorMaiorAcumulo")
+                        d_maior = converter_data(pos.get("dataMaiorAcumulo"))
+                        d_ult = converter_data(pos.get("dataUltimaCompra"))
+                        cod = pos.get("codigoAssociada")
+                        if v is not None and d_maior:
+                            if (melhor_maior_valor is None) or (float(v) > float(melhor_maior_valor)):
+                                melhor_maior_valor = v
+                                melhor_maior_data = d_maior
+                        if d_ult:
+                            if (ultima_compra_data is None) or (d_ult > ultima_compra_data):
+                                ultima_compra_data = d_ult
+                                ultima_compra_codigo = cod
+                if melhor_maior_data and not principal.get("data_maior_acumulo"):
+                    principal["data_maior_acumulo"] = melhor_maior_data.isoformat()
+                if ultima_compra_data and not principal.get("data_ultima_compra"):
+                    principal["data_ultima_compra"] = ultima_compra_data.isoformat()
+                    principal["codigo_associada_ultima_compra"] = ultima_compra_codigo
+                if (not principal.get("rating_atual")) and ratings:
+                    r0 = ratings[0]
+                    principal["rating_atual"] = r0.get("classificacao")
+                    principal["descricao_rating"] = r0.get("descricaoClassificacao")
+                principal.setdefault("total_limite_credito", info_sup.get("valorTotalLimiteCredito"))
+                principal.setdefault("total_maior_acumulo", info_sup.get("valorTotalMaiorAcumulo"))
+                principal.setdefault("total_debito_atual", info_sup.get("valorTotalDebitoAtual"))
+                principal.setdefault("total_debito_vencido_05_dias", info_sup.get("valorTotalDebitoVencidoMais05Dias"))
+                principal.setdefault("total_debito_vencido_15_dias", info_sup.get("valorTotalDebitoVencidoMais15Dias"))
+                principal.setdefault("total_debito_vencido_30_dias", info_sup.get("valorTotalDebitoVencidoMais30Dias"))
+                try:
+                    comp = payload_cisp.get("informacoesComportamentaisSegmentos") or []
+                    if isinstance(comp, list) and comp:
+                        ultimo = comp[0]
+                        total_ultimo = ultimo.get("total")
+                        if total_ultimo is not None:
+                            principal["total_debito_atual"] = total_ultimo
+                except Exception:
+                    pass
             except Exception:
                 pass
 
@@ -571,24 +568,21 @@ def obter_cliente(raiz):
         except Exception:
             extras["tot_titulos_protesto"] = None
 
-        # Ratings (histórico/análises) direto da API para a aba
+        # Ratings e segmentos positivos direto do payload já obtido
         ratings_list = []
         positiva_segmentos = []
-        try:
-            payload2 = payload_seed if 'payload_seed' in locals() else buscar_api_cisp(raiz)
-            if payload2 and isinstance(payload2.get("ratings"), list):
-                ratings_list = payload2.get("ratings") or []
-            if payload2 and isinstance(payload2.get("positivaSegmentos"), list):
-                positiva_segmentos = payload2.get("positivaSegmentos") or []
-        except Exception:
-            ratings_list = []
-            positiva_segmentos = []
+        if payload_cisp:
+            if isinstance(payload_cisp.get("ratings"), list):
+                ratings_list = payload_cisp.get("ratings") or []
+            if isinstance(payload_cisp.get("positivaSegmentos"), list):
+                positiva_segmentos = payload_cisp.get("positivaSegmentos") or []
 
         return jsonify({
             "success": True,
             "raiz": raiz,
             "principal": principal,
             "restritivas": restritivas,
+            "alertas": alertas,
             "consultas_mensais": consultas_mensais,
             "associadas_consultaram": associadas_consultaram,
             "associadas_nao_concederam": associadas_nao_concederam,
