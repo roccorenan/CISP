@@ -32,12 +32,12 @@ API_USERNAME = os.environ.get('CISP_USERNAME')
 API_PASSWORD = os.environ.get('CISP_PASSWORD')
 
 DB_CONFIG = {
-    'host': '127.0.0.1',
-    'port': '5432',
-    'database': 'dbDataLakePrd',
-    'user': 'postgres',
+    'host': os.environ.get('DB_HOST', '127.0.0.1'),
+    'port': os.environ.get('DB_PORT', '5432'),
+    'database': os.environ.get('DB_NAME', 'dbDataLakePrd'),
+    'user': os.environ.get('DB_USER', 'postgres'),
     'password': os.environ.get('POSTGRES'),
-    'options': '-c search_path=scsilverlayer'
+    'options': f"-c search_path={os.environ.get('DB_SCHEMA', 'scsilverlayer')}"
 }
 
 def conectar_db():

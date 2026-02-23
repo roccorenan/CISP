@@ -1,0 +1,53 @@
+version: "3.9"
+
+services:
+  web:
+    image: cisp-web:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cisp-web
+
+    ports:
+      - "5000:5000"
+
+    # Lê do .env do servidor (nunca versionado no Git)
+    environment:
+      CISP_USERNAME: ${CISP_USERNAME}
+      CISP_PASSWORD: ${CISP_PASSWORD}
+      POSTGRES:      ${POSTGRES}
+      DB_HOST:       ${DB_HOST:-host-gateway}
+      DB_PORT:       ${DB_PORT:-5432}
+      DB_NAME:       ${DB_NAME:-dbDataLakePrd}
+      DB_USER:       ${DB_USER:-postgres}
+      DB_SCHEMA:     ${DB_SCHEMA:-scsilverlayer}
+
+    # Permite acesso ao PostgreSQL instalado no host
+    extra_hosts:
+      - "host-gateway:host-gateway"
+
+    # Health-check: reinicia automaticamente se a API parar de responder
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request; urllib.request.urlopen('http://localhost:5000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+    restart: unless-stopped
+
+    # Limite de memória (ajuste conforme o servidor)
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 128M
+
+    # Rotação de logs para não encher o disco
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"

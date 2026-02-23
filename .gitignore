@@ -1,10 +1,11 @@
-## Environment and secrets
+## ── Secrets — NUNCA versionar ────────────────────────────────
 .env
 *.env
+.env.*
 *.pem
 *.key
 
-## Python
+## ── Python ────────────────────────────────────────────────────
 __pycache__/
 *.py[cod]
 *.pyo
@@ -13,19 +14,25 @@ __pycache__/
 dist/
 build/
 
-## Virtual environments
+## ── Ambientes virtuais ────────────────────────────────────────
 .venv/
 venv/
 env/
 ENV/
 
-## IDE / Editor
+## ── IDE / Editor ──────────────────────────────────────────────
 .vscode/
 .idea/
 
-## OS
+## ── OS ────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
 
-## Node (if any)
+## ── Node ──────────────────────────────────────────────────────
 node_modules/
+
+## ── Dados de teste (contêm CNPJs reais) ──────────────────────
+data.json
+
+## ── Logs ──────────────────────────────────────────────────────
+*.log
