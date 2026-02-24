@@ -24,46 +24,6 @@
   };
 
   const PBI_URL = "https://app.powerbi.com/reportEmbed?reportId=ccd6bbdb-151f-4c60-a39e-885fae091abf&appId=1ada0eb7-865f-4145-8c42-83942212adc0&autoAuth=true&ctid=b3cf12b1-e192-40d4-a26e-bacee6c0fa4e";
-  const PBI_FILTER_TABLE = "Cliente";
-  const PBI_FILTER_FIELD = "Raiz CNPJ Cliente";
-  const PBI_FILTER_VALUE_TYPE = "text"; // "text" or "number" conforme o tipo no BI
-
-  function encodePbiIdentifier(name) {
-    return String(name).replaceAll(" ", "_x0020_");
-  }
-
-  function buildPbiUrlWithFilter(raiz) {
-    const base = PBI_URL;
-    const val = String(raiz);
-    const tbl = encodePbiIdentifier(PBI_FILTER_TABLE);
-    const col = encodePbiIdentifier(PBI_FILTER_FIELD);
-    const valueExpr = PBI_FILTER_VALUE_TYPE === "number" ? `${val}` : `'${val}'`;
-    const filterExpr = `${tbl}/${col} eq ${valueExpr}`;
-    const extras = "&navContentPaneEnabled=false&filterPaneEnabled=false";
-    // include both filter and $filter to maximize compatibility
-    return `${base}&filter=${filterExpr}&$filter=${filterExpr}${extras}`;
-  }
-
-  function buildPbiUrlWithFilterNumeric(raiz) {
-    const base = PBI_URL;
-    const val = String(raiz);
-    const tbl = encodePbiIdentifier(PBI_FILTER_TABLE);
-    const col = encodePbiIdentifier(PBI_FILTER_FIELD);
-    const filterExpr = `${tbl}/${col} eq ${val}`;
-    const extras = "&navContentPaneEnabled=false&filterPaneEnabled=false";
-    return `${base}&filter=${filterExpr}&$filter=${filterExpr}${extras}`;
-  }
-
-  function applyFilterToPbi(raiz) {
-    const pbi = $("pbiFrame");
-    if (!pbi) return;
-    const urlText = buildPbiUrlWithFilter(raiz);
-    const urlNum = buildPbiUrlWithFilterNumeric(raiz);
-    pbi.src = urlText;
-    setTimeout(() => {
-      pbi.src = urlNum;
-    }, 400);
-  }
 
   function notify(msg) {
     if (!$("toastBody") || !toast) return;
@@ -401,7 +361,6 @@
         }
       }
       render(data);
-      applyFilterToPbi(raiz);
       addChip(raiz);
       const p2 = data.principal || {};
       const vazio2 = !p2.razao_social && !p2.cnpj && !p2.nome_fantasia && !p2.cidade && !p2.uf;
