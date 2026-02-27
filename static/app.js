@@ -67,14 +67,24 @@
     try {
       const r = await fetch("/api/health");
       const b = $("healthBadge");
+      const t = $("healthTime");
+      let ts = "";
+      try {
+        const j = await r.json();
+        ts = j && j.timestamp ? new Date(j.timestamp).toLocaleTimeString("pt-BR") : "";
+      } catch {}
       if (r.ok) {
-        if (b) b.className = "badge text-bg-success";
+        if (b) { b.className = "badge text-bg-success"; b.textContent = "API OK"; }
+        if (t) t.textContent = ts ? `• ${ts}` : "";
       } else {
-        if (b) b.className = "badge text-bg-danger";
+        if (b) { b.className = "badge text-bg-danger"; b.textContent = "API ERRO"; }
+        if (t) t.textContent = "";
       }
     } catch {
       const b = $("healthBadge");
-      if (b) b.className = "badge text-bg-danger";
+      const t = $("healthTime");
+      if (b) { b.className = "badge text-bg-danger"; b.textContent = "API ERRO"; }
+      if (t) t.textContent = "";
     }
   }
 
