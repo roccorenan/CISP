@@ -4,6 +4,7 @@ REPO_URL="$1"
 BRANCH="${2:-main}"
 APP_DIR="${3:-/opt/cisp}"
 INTERVAL="${4:-5min}"
+COMPOSE_FILE="${5:-docker-compose.linux.nginx.yml}"
 UNIT_DIR="/etc/systemd/system"
 SERVICE_NAME="cisp-update.service"
 TIMER_NAME="cisp-update.timer"
@@ -17,6 +18,7 @@ Type=oneshot
 Environment=REPO_URL=$REPO_URL
 Environment=BRANCH=$BRANCH
 Environment=APP_DIR=$APP_DIR
+Environment=COMPOSE_FILE=$COMPOSE_FILE
 ExecStart=/usr/bin/env bash $APP_DIR/scripts/linux/deploy.sh
 EOF
 cat > "$UNIT_DIR/$TIMER_NAME" <<EOF
