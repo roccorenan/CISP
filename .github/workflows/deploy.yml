@@ -12,43 +12,30 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
-      - name: Add SSH key from base64 secret (optional)
-        env:
-          SERVER_SSH_KEY_B64: ${{ secrets.SERVER_SSH_KEY_B64 }}
+      - name: Deploy on server runner
         run: |
-          if [ -n "$SERVER_SSH_KEY_B64" ]; then
-            echo "$SERVER_SSH_KEY_B64" | base64 -d > /tmp/ssh_key
-            chmod 600 /tmp/ssh_key
-            eval "$(ssh-agent -s)"
-            ssh-add /tmp/ssh_key
-          fi
-      - uses: webfactory/ssh-agent@v0.9.0
-        continue-on-error: true
-        with:
-          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
-      - name: Deploy to server
-        env:
-          SERVER_HOST: ${{ secrets.SERVER_HOST }}
-          SERVER_USER: ${{ secrets.SERVER_USER }}
-          SERVER_PORT: ${{ secrets.SERVER_PORT }}
-        run: |
-          ssh -o StrictHostKeyChecking=no -p "$SERVER_PORT" "$SERVER_USER@$SERVER_HOST" << 'EOF'
-          set -e
+          set -euxo pipefail
           cd /opt/cisp
+          echo ":: git fetch/reset"
           git fetch origin main
           git reset --hard origin/main
           COMPOSE_FILE="docker-compose.linux.nginx.yml"
+          echo ":: docker versions"
+          docker --version || true
           if docker compose version >/dev/null 2>&1; then
+            echo ":: using docker compose"
             docker compose -f "$COMPOSE_FILE" build
             docker compose -f "$COMPOSE_FILE" up -d --force-recreate
           elif command -v docker-compose >/dev/null 2>&1; then
+            echo ":: using docker-compose"
             docker-compose -f "$COMPOSE_FILE" build
             docker-compose -f "$COMPOSE_FILE" up -d --force-recreate
           else
             echo "docker compose/docker-compose não encontrados" >&2
             exit 1
           fi
-          EOF
+          echo ":: docker ps"
+          docker ps || true
