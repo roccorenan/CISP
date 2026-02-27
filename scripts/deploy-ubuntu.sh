@@ -3,6 +3,7 @@
 # deploy-ubuntu.sh — Setup inicial da VM Ubuntu Server 24.04
 # Execute como root ou com sudo: sudo bash deploy-ubuntu.sh
 # =============================================================================
+#--
 set -e
 
 APP_DIR="/opt/cisp"
